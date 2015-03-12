@@ -12,6 +12,14 @@ c::set('languages', array(
 c::set('routes', array(
 			// STATS Counter
 			array(
+				'pattern' => 'de',
+				'action'  => function() {
+						$s = site()->visit('home');
+						snippet('stats', array('param' => 'home'));
+						return $s;
+					}
+				),
+			array(
 				'pattern' => 'de/(:all)',
 				'action'  => function($param) {
 						$s = site()->visit($param);
