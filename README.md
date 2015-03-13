@@ -22,9 +22,10 @@ Some details can be specified in the config file. Use `c::set('option', 'paramet
 
 Option | Values
 -------|--------
-stats.roles.ignore | A single role (e.g. `'admin'`) or an array of roles (`array('admin', 'editor')`) for which no data will be recorded
-stats.days | kirby-stats keeps a log of the total page views per day for the last `$day` days
-stats.date.format | Any valid PHP date format string. Will be used in the panel widget to display the recorded per-day values.
+stats.roles.ignore | A single role (e.g. `'admin'`) or an array of roles (`array('admin', 'editor')`) for which no data will be recorded. Default: ""
+stats.days | kirby-stats keeps a log of the total page views per day for the last `$day` days. Default: 5
+stats.date.format | Any valid PHP date format string. Will be used in the panel widget to display the recorded per-day values. Default: `d.m.y`
+stats.links | Whether to link to link to the respective page from the list of most frequently visited pages or not. Default `true`
 
 ## Authors
 

@@ -10,14 +10,32 @@
 		</div>
 	</div>
 <?php else: ?>
-	<div width="100%"><canvas id="myChart"></canvas></div>
-	<ul id="stats" class="sidebar-list">
-		<?php foreach($data as $page => $percentage): ?>
-			<li><span><?php echo $page ?>:</span><small class="marginalia shiv shiv-left shiv-white"><?php echo $percentage * 100 ?>%</small></li>
-		<?php endforeach; ?>
-	</ul>
+	<div class="field">
+		<canvas id="myChart"></canvas>
+	</div>
+	<h2 class="hgroup hgroup-single-line cf">
+	    <span class="hgroup-title">Most visited pages</span>
+	</h2>
+	<div class="field">
+		<div class="dashboard-box">
+			<ul id="stats2" class="sidebar-list">
+				<?php $site = kirby()->site();
+				$links = c::get('stats.links', true);
+				foreach($data as $page => $percentage):
+					if ($links) {
+						$open = '<a href="' . $site->url() . '/' . $page . '" target="_blank" ><i class="icon icon-left fa fa-file-o"></i>';
+						$close = '</a>';
+					} else {
+						$open = '<span style="padding: .5em 1em;display:block">';
+						$close = '</span>';
+					} ?>
+					<li><?= $open ?><?= $page ?><span style="position:absolute;right:10px" class="shiv shiv-left shiv-grey"><?= $percentage * 100 ?>%</span><?= $close ?></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</div>
 
-	<?php echo js("assets/js/Chart.min.js"); ?>
+	<?php echo js("assets/js/Chart.js"); ?>
 	<script>
 	var ctx = document.getElementById("myChart").getContext("2d");
 	var data = {
