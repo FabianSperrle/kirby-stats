@@ -1,7 +1,5 @@
 # kirby-stats
 
-This is currently only tested on single language pages.
-
 ## What is kirby-stats
 
 kirby-stats is a minimalistic visitor statistics tool: It logs *each hit* to the website and shows a little widget in the panel.
@@ -15,6 +13,10 @@ kirby-stats is a minimalistic visitor statistics tool: It logs *each hit* to the
 ## Usage
 
 **Warning**: This plugin will store its information in a page called `kirbystats`. If this page exists, it will be corrupted with other data! If it doesn't exist, do not worry, the plugin will create the page itself.
+
+### Panel
+
+Currently kirby-stats stores the logs on a per-language basis, if you're using a multi language setup. Depending on your panel language the corresponding logs will be loaded. A combined view is in the works... 
 
 ### Settings
 
