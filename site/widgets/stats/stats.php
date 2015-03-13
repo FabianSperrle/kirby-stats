@@ -27,5 +27,6 @@ return array(
 			// Sort and keep 5 most important pages
 			arsort($clean);
 			$clean = array_slice($clean, 0, 5, true);
+			return tpl::load(__DIR__ . DS . 'template.php', array('nodata' => false, 'data' => $clean, 'history' => $history));
 		}
 		);

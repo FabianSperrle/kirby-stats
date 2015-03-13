@@ -1,4 +1,15 @@
-<?php if(!$nodata): ?>
+<?php if($nodata): ?>
+	<div class="dashboard-box">
+		<div class="text">
+			<h3>No data yet...</h3>
+			You don't seem to have visited any pages yet. Did you just install the plugin?
+			Browse through your site and come back here in a minute!
+			<h3>...still nothing?</h3>
+			If this message persists the plugin is unable to create a new page to store its data.
+			Please head over <a href="https://github.com/FabianSperrle/kirby-stats/issues">to Github</a> and file a report!
+		</div>
+	</div>
+<?php else: ?>
 	<div width="100%"><canvas id="myChart"></canvas></div>
 	<ul id="stats" class="sidebar-list">
 		<?php foreach($data as $page => $percentage): ?>
@@ -29,15 +40,4 @@
 		'responsive': true,
 	});
 	</script>
-<?php else: ?>
-	<div class="dashboard-box">
-		<div class="text">
-			<h3>No data yet...</h3>
-			You don't seem to have visited any pages yet. Did you just install the plugin?
-			Browse through your site and come back here in a minute!
-			<h3>...still nothing?</h3>
-			If this message persists the plugin is unable to create a new page to store its data.
-			Please head over <a href="https://github.com/FabianSperrle/kirby-stats/issues">to Github</a> and file a report!
-		</div>
-	</div>
 <?php endif; ?>
