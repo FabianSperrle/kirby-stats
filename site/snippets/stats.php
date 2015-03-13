@@ -1,6 +1,8 @@
 <?php 
 $site = site();
 
+/* Check if data should be logged for the current user */
+
 // Roles for which nothing is logged 
 $ignore = c::get('stats.roles.ignore', "");
 // Number of days to keep per-day totals for. Ensure that this is positive...
@@ -37,6 +39,21 @@ if ($user = $site->user()) {
 	}
 }
 
+/* Session mode */
+
+if (c::get('stats.session', false)) {
+	s::start();
+	// Get the already visited pages
+	$urls = s::get('stats', array());
+	// User has visited this page already in this session. Do nothing.
+	if (in_array($param, $urls)) {
+		return;
+	}
+	// User has never been here. Add the url and put back in the session storage
+	$urls[] = $param;
+	s::set('stats', $urls);
+}
+
 require_once(__DIR__ . DS . '../widgets/stats/helpers.php');
 
 $stats = getPage();
@@ -45,6 +62,9 @@ $stats = getPage();
 $data = $stats->pages()->yaml();
 $dates = $stats->dates()->yaml();
 $date = date($date_format);
+
+if ($data == null) $data = array();
+if ($dates == null) $dates = array();
 
 // calculate new values
 $val = (array_key_exists($param, $data)) ? (int) $data[$param]['count'] + 1 : 1;

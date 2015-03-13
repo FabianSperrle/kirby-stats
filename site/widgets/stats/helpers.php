@@ -1,7 +1,7 @@
 <?php
 
 function getPage($page = 'kirbystats') {
-	$stats = kirby()->site()->pages()->find('kirbystats');
+	$stats = page('kirbystats');
 	if (!$stats) {
 		try {
 			$stats = site()->pages()->create('kirbystats', 'stats');
