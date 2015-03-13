@@ -16,25 +16,25 @@ if ($param == ""){
 }
 
 // Check whether to ignore the current user
-$user = $site->user();
+if ($user = $site->user()) {
+	// Ignore everybody
+	if ($ignore == "_all") {
+		return;
+	}
 
-// Ignore everybody
-if ($ignore == "_all") {
-	return;
-}
-
-// Multiple rules to be ignored, test each of them
-if (is_array($ignore)) {
-	foreach ($ignore as $role) {
-		if($user->hasRole($role)) {
-			return;
+	// Multiple rules to be ignored, test each of them
+	if (is_array($ignore)) {
+		foreach ($ignore as $role) {
+			if($user->hasRole($role)) {
+				return;
+			}
 		}
 	}
-}
 
-// Only one rule or empty string if ignoring nobody
-if ($user->hasRole($ignore)) {
-	return;
+	// Only one rule or empty string if ignoring nobody
+	if ($user->hasRole($ignore)) {
+		return;
+	}
 }
 
 require_once(__DIR__ . DS . '../widgets/stats/helpers.php');
