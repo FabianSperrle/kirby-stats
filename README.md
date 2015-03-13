@@ -2,7 +2,7 @@
 
 ## What is kirby-stats
 
-kirby-stats is a minimalistic visitor statistics tool: It logs either *each hit* or *one hit per session and page* and shows a little widget in the panel. Per default every hit is logged, see Seetings for how you can change that.
+kirby-stats is a minimalistic visitor statistics tool: It logs either *each hit* or *one hit per session and page* and shows a little widget in the panel. Per default every hit is logged, see settings for how you can change that.
 
 ![Screenshot](http://i.imgur.com/CT2PhWe.jpg)
 
