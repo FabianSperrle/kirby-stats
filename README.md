@@ -11,11 +11,6 @@ kirby-stats is a minimalistic visitor statistics tool: It logs *each hit* to the
 ## Installation
 ### Download
 [Download the files](https://github.com/FabianSperrle/kirby-stats/archive/master.zip) and put them in the respective subfolders of `site` and `assets`. If any of the folders don't exist, create them.
-    
-### Adapted routing
-
-Merge your current routing information with the one present in `site/config/config.php`. If you don't have any routes set up yet, just copy the whole declaration.
-
 
 ## Usage
 
