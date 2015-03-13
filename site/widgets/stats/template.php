@@ -20,16 +20,34 @@
 		<div class="dashboard-box">
 			<ul id="stats2" class="sidebar-list">
 				<?php $site = kirby()->site();
+				// Determines if the list should link to the respective pages 
 				$links = c::get('stats.links', true);
-				foreach($data as $page => $percentage):
+				// Detrmines the output format (absolut, percentage, both)
+				$format = c::get('stats.format', 'percentage');
+				foreach($data as $page => $hits):
 					if ($links) {
 						$open = '<a href="' . $site->url() . '/' . $page . '" target="_blank" ><i class="icon icon-left fa fa-file-o"></i>';
 						$close = '</a>';
 					} else {
 						$open = '<span style="padding: .5em 1em;display:block">';
 						$close = '</span>';
-					} ?>
-					<li><?= $open ?><?= $page ?><span style="position:absolute;right:10px" class="shiv shiv-left shiv-grey"><?= $percentage * 100 ?>%</span><?= $close ?></li>
+					}
+					$value;
+					switch ($format) {
+						case "absolut":
+							$value = $hits;
+							break;
+
+						case "percentage":
+							$value = round($hits / $total, 2) * 100 . "%";
+							break;
+
+						case "both":
+							$value = $hits . ' (' . round($hits / $total, 2) * 100 . "%)";
+							break;
+					}
+					?>
+					<li><?= $open ?><?= $page ?><span style="position:absolute;right:10px" class="shiv shiv-left shiv-grey"><?= $value ?></span><?= $close ?></li>
 				<?php endforeach; ?>
 			</ul>
 		</div>

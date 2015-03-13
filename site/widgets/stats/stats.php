@@ -28,7 +28,7 @@ return array(
 
 			// Remove one level of nesting and calculate percentage of total hits
 			foreach ($data as $page => $arr) {
-				$clean[$page] = round($arr['count'] / $hits, 2);
+				$clean[$page] = $arr['count'];
 			}
 			// Unnest
 			foreach ($dates as $date => $arr) {
@@ -38,6 +38,6 @@ return array(
 			// Sort and keep 5 most important pages
 			arsort($clean);
 			$clean = array_slice($clean, 0, 5, true);
-			return tpl::load(__DIR__ . DS . 'template.php', array('nodata' => false, 'data' => $clean, 'history' => $history));
+			return tpl::load(__DIR__ . DS . 'template.php', array('nodata' => false, 'data' => $clean, 'history' => $history, 'total' => $hits));
 		}
 		);

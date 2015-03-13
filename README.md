@@ -26,9 +26,10 @@ Option | Values
 -------|--------
 stats.roles.ignore | A single role (e.g. `'admin'`) or an array of roles (`array('admin', 'editor')`) for which no data will be recorded. Default is "".
 stats.days | kirby-stats keeps a log of the total page views per day for the last `$day` days. Default is 5.
-stats.date.format | Any valid PHP date format string. Will be used in the panel widget to display the recorded per-day values. Default is `d.m.y`.
 stats.links | Whether to link to link to the respective page from the list of most frequently visited pages or not. Default is `true`.
 stats.session | Whether to store each hit (`false`) or one hit per session and page (`true`). Default is `false`.
+stats.date.format | Any valid PHP date format string. Will be used in the panel widget to display the recorded per-day values. Default is `d.m.y`.
+stats.format | Output format for the list in the widget. Options are `percentage`, `absolute` and `both`. Default is `percentage`.
 
 ## Authors
 
