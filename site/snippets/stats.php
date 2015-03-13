@@ -12,7 +12,7 @@ $date_format = c::get('stats.date.format', 'd.m.y');
 // Home doesn't have any url parameter apart from / which gets truncated, 
 // set one by hand
 if ($param == ""){
-	$param = "Home";
+	$param = c::get('home', 'home');
 }
 
 // Check whether to ignore the current user
